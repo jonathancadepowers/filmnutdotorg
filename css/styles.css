@@ -25,11 +25,11 @@
 }
 #right a {
 	color: black;
-	text-decoration: none;
+	text-decoration: underline;
 	box-shadow: none;
 }
 #right a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 	color: black;
 	background-color: white;
 }

@@ -90,7 +90,7 @@ $average_show_rating = number_format($average_show_rating, 2);
 
 			<div id="mediateaser">
 				
-				Below is a list of every TV show I've ever seen. Also check out my <a href="film.php">film</a> and <a href="lit.php">book</a> pages.
+				Here's a list of every TV show I ever seen at least one full season of. Also check out my <a href="film.php">film</a> and <a href="lit.php">book</a> pages.
 					
 			</div>
 			

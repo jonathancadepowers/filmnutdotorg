@@ -27,9 +27,11 @@ function print_default_opening_head() {
 
         <head>
     
-            <meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\">
+            <meta content=\"text/html; charset=iso-8859-1\" http-equiv=\"Content-Type\">
 
             <title>Filmnut</title>
+
+            <link rel=\"icon\" type=\"image/png\" href=\"../images/fav.png\" sizes=\"32x32\" />
 
             <link href=\"../css/styles.css\" rel=\"stylesheet\" type=\"text/css\">
 

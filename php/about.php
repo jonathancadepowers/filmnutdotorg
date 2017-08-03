@@ -30,7 +30,7 @@ require('global.php');
 			
 			<p>In his spare time, Jonathan plays with technology and consumes pop culture.</p>
 			
-			<p>Filmnut is the not-so-popular or influential weblog that Jonathan has maintained <a href="http://web.archive.org/web/*/http://www.filmnut.org">since December 2001</a>. He he has used the website as both a personal diary and a mind-dump on technology, film, and culture.</p>
+			<p>Filmnut is the not-so-popular or influential weblog that Jonathan has maintained <a href="http://web.archive.org/web/*/http://www.filmnut.org" target="_blank">since December 2001</a>. He he has used the website as both a personal diary and a mind-dump on technology, film, and culture.</p>
 			
 			<p><p class="bioheader"><b>Reverse Chronological Timeline of My Life</b></p>
 			

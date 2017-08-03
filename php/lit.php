@@ -90,7 +90,7 @@ $average_book_rating = number_format($average_book_rating, 2);
 
 			<div id="mediateaser">
 				
-				Below is a list of every book I've ever read. Also check out my <a href="film.php">film</a> and <a href="tv.php">TV</a> pages.
+				I don't read near as much as I'd like. Here's a list of every book I've read in my life. Also check out my <a href="film.php">film</a> and <a href="tv.php">TV</a> pages.
 					
 			</div>
 			
