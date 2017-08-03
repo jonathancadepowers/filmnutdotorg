@@ -1,12 +1,17 @@
 <?php
 
 function db_connect() {
-    $servername = "localhost";
-	$username = "root";
-	$password = "root";
-	$database = "filmnut";
 
-	$conn = new mysqli($servername, $username, $password, $database);
+    //Comment out the following when running the app locally.
+    require secret.php
+    db_connect_prod();
+
+    //Uncomment the following when running the app locally.
+    // $servername = "localhost";
+	// $username = "root";
+	// $password = "root";
+	// $database = "filmnut";
+	// $conn = new mysqli($servername, $username, $password, $database);
 
 	return $conn;
 
