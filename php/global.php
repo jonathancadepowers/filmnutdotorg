@@ -1,12 +1,20 @@
 <?php
 
 function db_connect() {
-    $servername = "localhost";
-	$username = "root";
-	$password = "root";
-	$database = "filmnut";
 
-	$conn = new mysqli($servername, $username, $password, $database);
+    //Comment out the following when running the app locally.
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $server = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+    $db = substr($url["path"], 1);
+
+    //Uncomment the following when running the app locally.
+    // $servername = "localhost";
+	// $username = "root";
+	// $password = "root";
+	// $database = "filmnut";
+	// $conn = new mysqli($servername, $username, $password, $database);
 
 	return $conn;
 
