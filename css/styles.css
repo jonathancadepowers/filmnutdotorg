@@ -194,6 +194,12 @@ blockquote {
 } 
 .mediapagestatcontent { font-size: 45px; }
 
+.aboutpagestatheader {
+	font-size: 13px;
+	margin-top: 14px; 
+} 
+.aboutpagestatcontent { font-size: 45px; }
+
 .site_welcome a {
 	text-decoration: none !important;
 	color: black !important;
@@ -223,11 +229,12 @@ blockquote {
 	background-color: #FCF4A4;
 }
 .bioheader {
-	font-size: 16px;
-	background-color: black;
-	padding: 6px 6px 6px 6px;
-	color: white;
+	font-size: 14px;
+	background-color: #dbd9d9;
+	padding: 5px 5px 5px 5px;
+	color: black;
 	display: table-cell; 
+	font-weight: normal;
 }
 
 /* ---------->>> CUSTOM FONTS <<<-----------*/

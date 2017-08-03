@@ -2,6 +2,27 @@
 
 require('global.php');
 
+$conn = db_connect();
+
+//Build age stats.
+$age_in_years = dateDifference("11/13/1981", date("m/d/y"), "%y");
+$age_in_days = dateDifference("11/13/1981", date("m/d/y"), "%a");
+
+//Calculate the total number of films watched.
+$sql = "SELECT * FROM film ORDER BY film ASC";
+$result_all_films = $conn->query($sql);
+$result_all_films_count = mysqli_num_rows($result_all_films);
+
+//Calculate the total number of TV shows watched.
+$sql = "SELECT * FROM tv ORDER BY `show` ASC";
+$result_all_shows = $conn->query($sql);
+$result_all_shows_count = mysqli_num_rows($result_all_shows);
+
+//Calculate the total number of books read.
+$sql = "SELECT * FROM lit ORDER BY book ASC";
+$result_all_books = $conn->query($sql);
+$result_all_books_count = mysqli_num_rows($result_all_books);
+
 ?>
 
 <!DOCTYPE html>
@@ -113,36 +134,30 @@ require('global.php');
 		<div id="right">
 
 			<div class="logo"><a href="blog.php">FILMNUT</a></div>
+			
+			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">My Current Age by Years</div>
+			
+				<div class="aboutpagestatcontent"><?php echo $age_in_years; ?></div>
 
-			<br><br>
+			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Total Days Lived</div>
 			
-			<img src="../images/aboutme1.jpg">
-			
-			<img src="../images/aboutme2.jpg">
-			
-			<img src="../images/aboutme3.jpg">
-			
-			<img src="../images/aboutme4.jpg">
-			
-			<img src="../images/aboutme5.jpg">
-			
-			<img src="../images/aboutme1.jpg">
-			
-			<img src="../images/aboutme2.jpg">
-			
-			<img src="../images/aboutme3.jpg">
-			
-			<img src="../images/aboutme4.jpg">
+				<div class="aboutpagestatcontent"><?php echo number_format($age_in_days); ?></div>
 
-			<img src="../images/aboutme1.jpg">
-
-			<img src="../images/aboutme2.jpg">
+			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Current Hometown</div>
 			
-			<img src="../images/aboutme3.jpg">
+				<div class="aboutpagestatcontent">Houston, TX</div>	
 
-			<img src="../images/aboutme3.jpg">
+			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Total Films Watched</div>
 			
-			<img src="../images/aboutme4.jpg">				
+				<div class="aboutpagestatcontent"><?php echo number_format($result_all_films_count); ?></div>
+
+			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Total TV Shows Watched</div>
+			
+				<div class="aboutpagestatcontent"><?php echo number_format($result_all_shows_count); ?></div>
+
+			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Total Books Read</div>
+			
+				<div class="aboutpagestatcontent"><?php echo number_format($result_all_books_count); ?></div>			
 
 		</div>
 		<!-- End right column. -->
