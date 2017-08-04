@@ -118,12 +118,12 @@ $result_last_five_films_watched_query = $conn->query($sql);
 			
 			<div class="logo"><a href="blog.php">FILMNUT</a></div>
 			
-			<p class="site_welcome"><b>Hi. I'm <a href="about.php">Jonathan</a>.</b> I like to write about pop culture and technology, as well as track every <a href="film.php">film</a>, <a href="tv.php">TV show</a>, and <a href="lit.php">book</a> that I consume. I also like <a href="quotes.php">quotes</a>. Stay awhile.</p>
+			<p class="site_welcome"><b>Hi. I'm <a href="about.php">Jonathan</a>.</b> I <a href="blog.php?archive=true">write</a> about pop culture and technology. I track every <a href="film.php">film</a>, <a href="tv.php">TV show</a>, and <a href="lit.php">book</a> that I consume. I like <a href="quotes.php">quotes</a>. Stay awhile.</p>
 
 			<div class="external_links">
 				<a target="_blank" href="https://twitter.com/filmnut"><i class="fa fa-twitter-square" aria-hidden="true"></i></a> 
 				<a target="_blank" href="https://www.instagram.com/jonathanpowers/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-				<a target="_blank" href="https://www.flickr.com/photos/filmnut"><i class="fa fa-flickr" aria-hidden="true"></i></a> 
+				<a target="_blank" href="https://github.com/jonathancadepowers"><i class="fa fa-github" aria-hidden="true"></i></a> 
 			</div>
 
 			<p style="margin-bottom: -10px;">
@@ -151,10 +151,12 @@ $result_last_five_films_watched_query = $conn->query($sql);
 				<b>Other Cool-ish Stuf:</b>
 			
 				<ul>
-					<li><a href="blog.php?id=9">My Top 100 Films list. (2009)</a></li>
+					<li><a href="blog.php?archive=true">Every blog post I've ever made.</a></li>
+					<li><a href="blog.php?id=9">My Top 100 Films list (2009 Edition).</a></li>
 					<li><a href="https://www.laserfiche.com/solutionexchange/zeno-imaging-revamped-customer-order-process-laserfiche-forms/" target="_blank">An article written about an ECM system that I built.</a></li>
 					<li><a href="https://www.flickr.com/photos/filmnut/sets/72157627793362503" target="_blank">Photos from my Iceland trip.</a></li>
 					<li><a href="https://www.flickr.com/photos/filmnut/sets/72157633692262724" target="_blank">Photos from my honeymoon to Hawaii, Singapore, and Japan.</a></li>
+					<li><a href="https://www.flickr.com/photos/filmnut/albums/72157671915141692" target="_blank">Way too many pictures of my daughter Brighton.</a></li>
 				</ul>
 				
 			</p>
