@@ -103,7 +103,7 @@ switch ($path_name) {
                 
                 <div class=\"popcultureitemcontainer\">
                 
-                    <div class=\"popcultureitemname\"><a href=\"{$row["imdb_url"]}\" target=\"_blank\">{$row["film"]}</a><br /><div class=\"popcultureitemproperties\">{$row["directors"]} | Watched {$dt_formatted}</div></div><div class=\"popcultureitemrating\"><img src=\"../images/{$row["rating"]}.gif\" /></div>        
+                    <div class=\"popcultureitemname\"><a href=\"{$row["imdb_url"]}\" target=\"_blank\">{$row["film"]}</a><br /><div class=\"popcultureitemproperties\">{$row["directors"]} | Released {$row["release_year"]} | Watched {$dt_formatted}</div></div><div class=\"popcultureitemrating\"><img src=\"../images/{$row["rating"]}.gif\" /></div>          
                 
                 </div>
                 

@@ -45,7 +45,7 @@ $result_all_books_count = mysqli_num_rows($result_all_books);
 		<!-- Begin left column. -->
 		<div id="left">
 
-			<p class="bioheader"><b>Stuffy Third Person Bio</b></p>
+			<p class="bioheader"><i class="fa fa-info-circle" aria-hidden="true"></i> <b>Stuffy Third Person Bio</b></p>
 			
 			<p>Jonathan is a dude that plays with software for a living and currently lives in Houston, Texas. He prefers Mac to PC, no car payments to fancy BMWs, Chipotle to Freebirds, Google to Yahoo, Pinkberry to Yogurtland, post-modern to modern, slow to fast, Sofia to Francis Ford, and grey to black or white.</p>
 			
@@ -53,11 +53,11 @@ $result_all_books_count = mysqli_num_rows($result_all_books);
 			
 			<p>Filmnut is the not-so-popular or influential weblog that Jonathan has maintained <a href="http://web.archive.org/web/*/http://www.filmnut.org" target="_blank">since December 2001</a>. He he has used the website as both a personal diary and a mind-dump on technology, film, and culture.</p>
 			
-			<p><p class="bioheader"><b>Reverse Chronological Timeline of My Life</b></p>
+			<p><p class="bioheader"><i class="fa fa-calendar" aria-hidden="true"></i> <b>Reverse Chronological Timeline of My Life</b></p>
 			
 			<p><b>2017:</b> In progress...
 
-			<p><b>2016:</b> I become a dad! Me! To the cutest most wonderful little girl in the world named Brighton! Ahhhhhh!
+			<p><b>2016:</b> I become a dad! Me! To the cutest most wonderful little girl in the world named <a href="https://www.instagram.com/p/BWYrlObFoNZ/?taken-by=jonathanpowers" target="_blank">Brighton</a>! Ahhhhhh!
 
 			<p><b>2015:</b> I'm devestated to leave Midland behind and return to Houston. Not. Oh, and we buy a house in the awesome neighborhood of <a href="https://en.wikipedia.org/wiki/Montrose,_Houston" target="_blank">Montrose</a>.
 
@@ -145,7 +145,11 @@ $result_all_books_count = mysqli_num_rows($result_all_books);
 
 			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Current Hometown</div>
 			
-				<div class="aboutpagestatcontent">Houston, TX</div>	
+				<div class="aboutpagestatcontent">Houston, TX</div>
+
+			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Countries I've Lived In</div>
+			
+				<div class="aboutpagestatcontent">8</div>
 
 			<div class="aboutpagestatheader" style="font-size: 13px; margin-top: 20px;">Total Films Watched</div>
 			
