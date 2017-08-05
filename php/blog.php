@@ -152,7 +152,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 			
 				<ul>
 					<li><a href="blog.php?archive=true">Every blog post I've ever made.</a></li>
-					<li><a href="blog.php?id=9">My Top 100 Films list (2009 Edition).</a></li>
+					<li><a href="blog.php?id=22">My Top 100 Films list (2017 Edition).</a></li>
 					<li><a href="https://www.laserfiche.com/solutionexchange/zeno-imaging-revamped-customer-order-process-laserfiche-forms/" target="_blank">An article written about an ECM system that I built.</a></li>
 					<li><a href="https://www.flickr.com/photos/filmnut/sets/72157627793362503" target="_blank">Photos from my Iceland trip.</a></li>
 					<li><a href="https://www.flickr.com/photos/filmnut/sets/72157633692262724" target="_blank">Photos from my honeymoon to Hawaii, Singapore, and Japan.</a></li>
