@@ -90,7 +90,7 @@ $average_film_rating = number_format($average_film_rating, 2);
 
 			<div id="mediateaser">
 				
-				Film is kinda my thing. Here's a list of every movie I've ever seen. Also check out my <a href="tv.php">TV</a> and <a href="lit.php">book</a> pages.
+				Film is kinda my thing. Here's a list of every movie I've ever seen. Also check out my <a href="tv.php">TV</a> and <a href="lit.php">book</a> pages, plus see a <a href="https://www.youtube.com/playlist?list=PLCVz03lD2vD9TCBqyktmBUoBgLV33n25p" target="_blank">list of movies</a> I want to see.
 					
 			</div>
 			

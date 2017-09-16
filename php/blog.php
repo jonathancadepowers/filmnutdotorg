@@ -124,6 +124,8 @@ $result_last_five_films_watched_query = $conn->query($sql);
 				<a target="_blank" href="https://twitter.com/filmnut"><i class="fa fa-twitter-square" aria-hidden="true"></i></a> 
 				<a target="_blank" href="https://www.instagram.com/jonathanpowers/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 				<a target="_blank" href="https://github.com/jonathancadepowers"><i class="fa fa-github" aria-hidden="true"></i></a> 
+				<a target="_blank" href="https://www.youtube.com/playlist?list=LLW0do5SbMoOvxBqnZzMFzeQ"><i class="fa fa-youtube" aria-hidden="true"></i></a> 
+				<a target="_blank" href="https://www.last.fm/user/afilmnut"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a> 
 			</div>
 
 			<p style="margin-bottom: -10px;">
@@ -152,6 +154,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 			
 				<ul>
 					<li><a href="blog.php?archive=true">Every blog post I've ever made.</a></li>
+					<li><a href="https://www.youtube.com/playlist?list=PLCVz03lD2vD9TCBqyktmBUoBgLV33n25p" target="_blank">A list of movies I want to see.</a></li>
 					<li><a href="blog.php?id=22">My Top 100 Films list (2017 Edition).</a></li>
 					<li><a href="https://www.laserfiche.com/solutionexchange/zeno-imaging-revamped-customer-order-process-laserfiche-forms/" target="_blank">An article written about an ECM system that I built.</a></li>
 					<li><a href="https://vimeo.com/filmnut" target="_blank">My Vimeo videos.</a></li>
