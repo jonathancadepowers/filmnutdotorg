@@ -114,7 +114,7 @@ $average_show_rating = number_format($average_show_rating, 2);
 										
 					<div class=\"popcultureitemcontainer\">
 					
-						<div class=\"popcultureitemname\"><a href=\"{$row["link"]}\" target=\"_blank\">{$row["show"]}</a><br /><div class=\"popcultureitemproperties\">Watched {$dt_formatted}</div></div><div class=\"popcultureitemrating\"><img src=\"../images/{$row["rating"]}.gif\" /></div>						
+						<div class=\"popcultureitemname\"><a href=\"{$row["link"]}\" target=\"_blank\">{$row["show"]}</a><br /><div class=\"popcultureitemproperties\">Watched {$dt_formatted} | Season(s) {$row["seasons"]}</div></div><div class=\"popcultureitemrating\"><img src=\"../images/{$row["rating"]}.gif\" /></div>						
 						
 					</div>
 					
