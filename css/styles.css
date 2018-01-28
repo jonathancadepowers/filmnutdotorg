@@ -1,242 +1,268 @@
 /* ---------->>> PAGE STRUCTURE <<<-----------*/
-
-#toprail {
-	background: #383d44 url(../images/rail.jpg) repeat-x bottom left;
-	width: 100%;
-	height: 18px;
-	min-width: 1200px;
+ #toprail {
+     background: #383d44 url(../images/rail.jpg) repeat-x bottom left;
+     width: 100%;
+     height: 18px;
+     min-width: 1200px;
 }
-#container {
-	width: 1100px;
-	margin-left: 50px;
-	margin-top: 40px;
+ #container {
+     width: 1100px;
+     margin-left: 50px;
+     margin-top: 40px;
 }
-#left {
-	float: left;
-	width: 700px;
-	position: relative;
-	top: 0px;
+ #left {
+     float: left;
+     width: 700px;
+     position: relative;
+     top: 0px;
 }
-#right {
-	float: right;
-	width: 320px;
-	padding: 0px 15px 0px 25px;
-	border-left: 1px solid #DDDDDD;
-	border-right: 1px solid #DDDDDD;
+ #right {
+     float: right;
+     width: 320px;
+     padding: 0px 15px 0px 25px;
+     border-left: 1px solid #DDDDDD;
+     border-right: 1px solid #DDDDDD;
 }
-#right a {
-	color: black;
-	text-decoration: underline;
-	box-shadow: none;
+ #right a {
+     color: black;
+     text-decoration: underline;
+     box-shadow: none;
 }
-#right a:hover {
-	text-decoration: none;
-	color: black;
-	background-color: white;
+ #right a:hover {
+     text-decoration: none;
+     color: black;
+     background-color: white;
 }
-
 /* ---------->>> GLOBAL OBJECTS <<<-----------*/
-
-body {
-	margin: 0px;
-	font-family: Verdana, Geneva, Arial, sans-serif;
-	font-size: 16px;
+ body {
+     margin: 0px;
+     font-family: Verdana, Geneva, Arial, sans-serif;
+     font-size: 16px;
 }
-img {
-	border: 6px solid #CCCCCC;
-	border-radius: 4px;
+ img {
+     border: 6px solid #CCCCCC;
+     border-radius: 4px;
 }
-p {
-	line-height: 25px;
+ p {
+     line-height: 25px;
 }
-li {
-	margin-bottom: 7px;
-	margin-left: 0px;
-	line-height: 25px;
+ li {
+     margin-bottom: 7px;
+     margin-left: 0px;
+     line-height: 25px;
 }
-a {
-	text-decoration: none;
-	color: black;
-	box-shadow: inset 0 -4px 0 #c0e6f7;
+ a {
+     text-decoration: none;
+     color: black;
+     box-shadow: inset 0 -4px 0 #c0e6f7;
 }
-a:hover {
-	text-decoration: none;
-	color: black;
-	background-color: #c0e6f7;
+ a:hover {
+     text-decoration: none;
+     color: black;
+     background-color: #c0e6f7;
 }
-blockquote {
-	margin-top: 18px;
-	margin-bottom: 18px;
-	margin-left: 20px;
-	padding: 10px 5px 10px 10px;
-	background-color: #ede8e8;
-	border: 0px solid #EFE14A;
+ blockquote {
+     margin-top: 18px;
+     margin-bottom: 18px;
+     margin-left: 20px;
+     padding: 10px 5px 10px 10px;
+     background-color: #ede8e8;
+     border: 0px solid #EFE14A;
 }
-
 /* ---------->>> STYLES <<<-----------*/
-
-.logo {
-	font-family: league_monolight;
-	font-size: 35px;
-	color: black;
-	background-color: #F06768;
-	padding: 5px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	display: inline-block;
-	text-align: center;
-	margin-top: 10px;
-	border-radius: 5px;
+ .logo {
+     font-family: league_monolight;
+     font-size: 35px;
+     color: black;
+     background-color: #F06768;
+     padding: 5px;
+     padding-top: 0px;
+     padding-bottom: 0px;
+     display: inline-block;
+     text-align: center;
+     margin-top: 10px;
+     border-radius: 5px;
 }
-.logo a {
-	text-decoration: none;
-	color: black;
-	box-shadow: none;
+ .logo a {
+     text-decoration: none;
+     color: black;
+     box-shadow: none;
 }
-.logo a:hover {
-	text-decoration: none !important;
-	color: black !important;
-	background-color: #F06768 !important;
+ .logo a:hover {
+     text-decoration: none !important;
+     color: black !important;
+     background-color: #F06768 !important;
 }
-.blog_post_header {
-	font-size: 20px;
-	padding-top: 7px;
-	font-weight: bold;
-	margin-bottom: -17px;
+ .blog_post_header {
+     font-size: 20px;
+     padding-top: 7px;
+     font-weight: bold;
+     margin-bottom: -17px;
 }
-.blog_post_timestamp a {
-	color: #F06768;
-	text-decoration: none;
-	box-shadow: none;
-	font-size: 12px;
+ .blog_post_timestamp a {
+     color: #F06768;
+     text-decoration: none;
+     box-shadow: none;
+     font-size: 12px;
 }
-.blog_post_timestamp a:hover {
-	text-decoration: none;
-	color: #F06768;
-	background-color: white;
+ .blog_post_timestamp a:hover {
+     text-decoration: none;
+     color: #F06768;
+     background-color: white;
 }
-.archive_header {
-	font-size: 25px;
-	padding-top: 7px;
-	font-weight: bold;
+ .archive_header {
+     font-size: 25px;
+     padding-top: 7px;
+     font-weight: bold;
 }
-.archive_list {
-	margin-bottom: 15px;
+ .archive_list {
+     margin-bottom: 15px;
 }
-.archive_list_timestamp {
-	color: #F06768;
-	text-decoration: none;
-	box-shadow: none;
-	font-size: 10px;
+ .archive_list_timestamp {
+     color: #F06768;
+     text-decoration: none;
+     box-shadow: none;
+     font-size: 10px;
 }
-.navigation_link a {
-	color: #F06768;
-	text-decoration: none;
-	box-shadow: none;
-	font-size: 14px;
+ .navigation_link a {
+     color: #F06768;
+     text-decoration: none;
+     box-shadow: none;
+     font-size: 14px;
 }
-.navigation_link a:hover {
-	text-decoration: none;
-	color: #F06768;
-	background-color: white;
+ .navigation_link a:hover {
+     text-decoration: none;
+     color: #F06768;
+     background-color: white;
 }
-.external_links {
-	font-size: 30px;
+ .external_links {
+     font-size: 30px;
 }
-.external_links a {
-	text-decoration: none;
-	box-shadow: none;
+ .external_links a {
+     text-decoration: none;
+     box-shadow: none;
 }
-.external_links a:hover {
-	background-color: white;
+ .external_links a:hover {
+     background-color: white;
 }
-.popcultureitemcontainer {
-	margin-bottom: 14px;
-	padding-bottom: 17px;
-	display: table;
-	width: 100%;
-	font-size: 18px;
-	border-bottom: 1px solid #DDDDDD; }
- 
-	.popcultureitemcontainer img { border: none; }
-
-	.popcultureitemcontainer a {
-		text-decoration: underline;
-		color: black;
-		box-shadow: none;
-	}
-		.popcultureitemcontainer a:hover {
-			text-decoration: none;
-			color: black;
-			box-shadow: none;
-			background-color: white;
-		}
-.popcultureitemname {
-	display: table-cell;
-	float: left;
-	clear: both;
-	width: 80%; }
-.popcultureitemrating {
-	display: table-cell;
-	float: right;
-	text-align: right;
-	position: relative;
-	top: 7px; }
-.popcultureitemproperties {
-	font-size: 13px;
-	padding-top: 5px; }
-.pop_culture_toggler {
-	margin-top: 16px;
+ .popcultureitemcontainer {
+     margin-bottom: 14px;
+     padding-bottom: 17px;
+     display: table;
+     width: 100%;
+     font-size: 18px;
+     border-bottom: 1px solid #DDDDDD;
 }
-.mediapagestatheader {
-	font-size: 13px;
-	margin-top: 14px; 
-} 
-.mediapagestatcontent { font-size: 45px; }
-
-.aboutpagestatheader {
-	font-size: 13px;
-	margin-top: 14px; 
-} 
-.aboutpagestatcontent { font-size: 45px; }
-
-.site_welcome a {
-	text-decoration: none !important;
-	color: black !important;
-	box-shadow: inset 0 -4px 0 #c0e6f7 !important;
+ .popcultureitemcontainer img {
+     border: none;
 }
-.site_welcome a:hover {
-	text-decoration: none !important;
-	color: black !important;
-	background-color: #c0e6f7 !important;
+ .popcultureitemcontainer a {
+     text-decoration: underline;
+     color: black;
+     box-shadow: none;
 }
-#mediateaser {
-	background-color: #FCF4A4;
-	width: 600px;
-	margin-top: -10px;
-	margin-left: 20px;
-	margin-bottom: 25px;
-	padding: 8px 10px 8px 10px;
-	font-size: 17px; }
-#mediateaser a {
-	color: black;
-	text-decoration: underline;
-	box-shadow: none;
+ .popcultureitemcontainer a:hover {
+     text-decoration: none;
+     color: black;
+     box-shadow: none;
+     background-color: white;
 }
-#mediateaser a:hover {
-	text-decoration: none;
-	color: black;
-	background-color: #FCF4A4;
+ .popcultureitemname {
+     display: table-cell;
+     float: left;
+     clear: both;
+     width: 80%;
 }
-.bioheader {
-	font-size: 20px;
+ .popcultureitemrating {
+     display: table-cell;
+     float: right;
+     text-align: right;
+     position: relative;
+     top: 7px;
 }
-
+ .popcultureitemproperties {
+     font-size: 13px;
+     padding-top: 5px;
+}
+ .pop_culture_toggler {
+     margin-top: 16px;
+}
+ .mediapagestatheader {
+     font-size: 13px;
+     margin-top: 14px;
+}
+ .mediapagestatcontent {
+     font-size: 45px;
+}
+ .aboutpagestatheader {
+     font-size: 13px;
+     margin-top: 14px;
+}
+ .aboutpagestatcontent {
+     font-size: 45px;
+}
+ .site_welcome a {
+     text-decoration: none !important;
+     color: black !important;
+     box-shadow: inset 0 -4px 0 #c0e6f7 !important;
+}
+ .site_welcome a:hover {
+     text-decoration: none !important;
+     color: black !important;
+     background-color: #c0e6f7 !important;
+}
+ #mediateaser {
+     background-color: #FCF4A4;
+     width: 600px;
+     margin-top: -10px;
+     margin-left: 20px;
+     margin-bottom: 25px;
+     padding: 8px 10px 8px 10px;
+     font-size: 17px;
+}
+ #mediateaser a {
+     color: black;
+     text-decoration: underline;
+     box-shadow: none;
+}
+ #mediateaser a:hover {
+     text-decoration: none;
+     color: black;
+     background-color: #FCF4A4;
+}
+ .bioheader {
+     font-size: 20px;
+}
+ #db_update_message {
+     background-color: #FCF4A4;
+     padding: 8px 10px 8px 10px;
+     font-size: 17px;
+     margin-top: 15px;
+     display:inline-block;
+}
+input[type=text],input[type=password] {
+	margin-top:4px;
+	height:25px;
+	font-size:17px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	-khtml-border-radius:4px;
+	border-radius:4px;
+	background-color:#cbced0;
+	border:1px solid #cbced0;
+	padding:6px 12px
+}
+select {
+	border:none;
+	font-size:16px;
+	background-color:#cbced0
+}
+#edit_db_item {
+}
 /* ---------->>> CUSTOM FONTS <<<-----------*/
-
-@font-face {
-	font-family: 'league_monolight';
-	src: url('../other/leaguemono-light-webfont.woff2') format('woff2'), url('../other/leaguemono-light-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+ @font-face {
+     font-family: 'league_monolight';
+     src: url('../other/leaguemono-light-webfont.woff2') format('woff2'), url('../other/leaguemono-light-webfont.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
 }
