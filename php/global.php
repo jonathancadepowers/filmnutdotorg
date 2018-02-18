@@ -1,5 +1,8 @@
 <?php
 
+//Set reporting level for all pages.
+error_reporting(E_ALL ^ E_NOTICE);
+
 function db_connect() {
 
     if ( getenv("CLEARDB_DATABASE_URL") ) {
