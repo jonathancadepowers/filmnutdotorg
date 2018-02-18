@@ -135,7 +135,7 @@ $average_show_rating = number_format($average_show_rating, 2);
 			<!-- Show the total number of shows watched all-time. -->
 			<div class="mediapagestatheader" style="font-size: 13px; margin-top: 20px;">Shows I've Seen in my Life</div>
 			
-				<div class="mediapagestatcontent"><?php echo $result_all_shows_count; ?></div>
+				<div class="mediapagestatcontent"><?php echo number_format($result_all_shows_count); ?></div>
 
 			<!-- Show the total number of shows watched this year. -->
 			<div class="mediapagestatheader">Shows I've Seen this Year</div>

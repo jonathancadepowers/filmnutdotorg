@@ -135,7 +135,7 @@ $average_film_rating = number_format($average_film_rating, 2);
 			<!-- Show the total number of films watched all-time. -->
 			<div class="mediapagestatheader" style="font-size: 13px; margin-top: 20px;">Films I've Seen in my Life</div>
 			
-				<div class="mediapagestatcontent"><?php echo $result_all_films_count; ?></div>
+				<div class="mediapagestatcontent"><?php echo number_format($result_all_films_count); ?></div>
 
 			<!-- Show the total number of films watched this year. -->
 			<div class="mediapagestatheader">Films I've Seen this Year</div>

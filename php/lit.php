@@ -135,7 +135,7 @@ $average_book_rating = number_format($average_book_rating, 2);
 			<!-- Show the total number of books read all-time. -->
 			<div class="mediapagestatheader" style="font-size: 13px; margin-top: 20px;">Books I've Read in my Life</div>
 			
-				<div class="mediapagestatcontent"><?php echo $result_all_books_count; ?></div>
+				<div class="mediapagestatcontent"><?php echo number_format($result_all_books_count); ?></div>
 
 			<!-- Show the total number of books read this year. -->
 			<div class="mediapagestatheader">Books I've Read this Year</div>
