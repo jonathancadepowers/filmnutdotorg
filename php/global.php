@@ -15,7 +15,7 @@ function db_connect() {
 
     } else {
 
-        $server = "localhost";
+        $server = "127.0.0.1";
         $username = "root";
         $password = "root";
         $database = "filmnut";
