@@ -13,7 +13,7 @@ $result_all_films_count = mysqli_num_rows($result_all_films);
 
 //Count the number of films watched this year.
 $starting_timestamp_for_current_year = strtotime( "1 January" . date("Y") );
-$sql = "SELECT * FROM film WHERE timestamp > $starting_timestamp_for_current_year";
+$sql = "SELECT * FROM film WHERE timestamp > $starting_timestamp_for_current_year and backdated <> \"Yes\" ";
 $result_films_this_year = $conn->query($sql);
 $result_films_this_year_count = mysqli_num_rows($result_films_this_year);
 

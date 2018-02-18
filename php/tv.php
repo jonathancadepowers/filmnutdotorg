@@ -13,7 +13,7 @@ $result_all_shows_count = mysqli_num_rows($result_all_shows);
 
 //Count the number of TV shows watched this year.
 $starting_timestamp_for_current_year = strtotime( "1 January" . date("Y") );
-$sql = "SELECT * FROM tv WHERE timestamp > $starting_timestamp_for_current_year";
+$sql = "SELECT * FROM tv WHERE timestamp > $starting_timestamp_for_current_year and backdated <> \"Yes\" ";
 $result_shows_this_year = $conn->query($sql);
 $result_shows_this_year_count = mysqli_num_rows($result_shows_this_year);
 

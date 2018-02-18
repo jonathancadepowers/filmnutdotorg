@@ -24,7 +24,7 @@ else {
 $result_blog_post_query = $conn->query($sql);
 
 //Set the last five films watched query.
-$sql = "SELECT * FROM film ORDER BY timestamp desc LIMIT 5";
+$sql = "SELECT * FROM film WHERE backdated <> \"Yes\" ORDER BY timestamp desc LIMIT 5";
 
 //Execute the last five films watched query.
 $result_last_five_films_watched_query = $conn->query($sql);

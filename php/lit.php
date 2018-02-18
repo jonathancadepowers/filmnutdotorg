@@ -13,7 +13,7 @@ $result_all_books_count = mysqli_num_rows($result_all_books);
 
 //Count the number of books read this year.
 $starting_timestamp_for_current_year = strtotime( "1 January" . date("Y") );
-$sql = "SELECT * FROM lit WHERE timestamp > $starting_timestamp_for_current_year";
+$sql = "SELECT * FROM lit WHERE timestamp > $starting_timestamp_for_current_year and backdated <> \"Yes\" ";
 $result_books_this_year = $conn->query($sql);
 $result_books_this_year_count = mysqli_num_rows($result_books_this_year);
 
