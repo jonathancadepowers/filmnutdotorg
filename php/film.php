@@ -24,6 +24,20 @@ $average_film_rating = 0;
 while($row = $result_average_rating->fetch_assoc()) { $average_film_rating = $row["AVG(rating)"]; };
 $average_film_rating = number_format($average_film_rating, 2);
 
+//Calculate total minutes watching film.
+$sql = "SELECT SUM(`running_time`) FROM `film`";
+$totalminutesoffilmwatched = 0;
+$result_minutes_watching = $conn->query($sql);
+while($row = $result_minutes_watching->fetch_assoc()) { $totalminutesoffilmwatched = $row["SUM(`running_time`)"]; };
+
+//Identify the top directors.
+$sql = "select `Directors`, count(*) from `film` group by `Directors` order by count(*) desc LIMIT 10";
+$result_top_directors = $conn->query($sql);
+
+//Identify the top release years.
+$sql = "select `release_year`, count(*) from `film` group by `release_year` order by count(*) desc limit 15";
+$result_top_years = $conn->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -133,7 +147,7 @@ $average_film_rating = number_format($average_film_rating, 2);
 			<div class="logo"><a href="blog.php">FILMNUT</a></div>
 			
 			<!-- Show the total number of films watched all-time. -->
-			<div class="mediapagestatheader" style="font-size: 13px; margin-top: 20px;">Films I've Seen in my Life</div>
+			<div class="mediapagestatheader">Films I've Seen in my Life</div>
 			
 				<div class="mediapagestatcontent"><?php echo number_format($result_all_films_count); ?></div>
 
@@ -143,9 +157,14 @@ $average_film_rating = number_format($average_film_rating, 2);
 				<div class="mediapagestatcontent" style="margin-bottom: 7px;"><?php echo $result_films_this_year_count; ?></div>
 
 			<!-- Show the average film rating. -->
-			<div class="mediapagestatheader" style="font-size: 13px; margin-top: 20px;">Average Film Rating</div>
+			<div class="mediapagestatheader">Average Film Rating</div>
 			
-				<div class="mediapagestatcontent"><?php echo $average_film_rating; ?></div>	
+				<div class="mediapagestatcontent"><?php echo $average_film_rating; ?></div>
+
+			<!-- Show the total minutes watching film. -->
+			<div class="mediapagestatheader">Lifetime Minutes Watching Film</div>
+			
+				<div class="mediapagestatcontent"><?php echo number_format($totalminutesoffilmwatched); ?></div>	
 
 			<!-- Show the filter dropdown list. -->
 			<div class="pop_culture_toggler">
@@ -157,7 +176,19 @@ $average_film_rating = number_format($average_film_rating, 2);
 				  <option value="2">Show Only 2 Stars</option>
 				  <option value="1">Show Only 1 Stars</option>				  
 				</select>
-			</div>			
+			</div>
+
+			</br></br>
+
+			<!-- Show the top directors. -->
+			<div class="mediapagestatheader" style="font-weight: bold; margin-top: 26px;">Most Watched Directors</div>
+			
+				<div class="mediapagestatcontentsmall"><ol><?php while($row = $result_top_directors->fetch_assoc()) { echo "<li>".$row["Directors"]." (".$row["count(*)"].") </li>"; }; ?></ol></div>
+
+				<!-- Show the top release years. -->
+			<div class="mediapagestatheader" style="font-weight: bold;">Most Watched Release Years</div>
+			
+				<div class="mediapagestatcontentsmall"><ol><?php while($row = $result_top_years->fetch_assoc()) { echo "<li>".$row["release_year"]." (".$row["count(*)"].") </li>"; }; ?></ol></div>			
 
 		</div>
 		<!-- End right column. -->

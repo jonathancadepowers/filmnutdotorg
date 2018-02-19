@@ -185,18 +185,24 @@
      padding-top: 5px;
 }
  .pop_culture_toggler {
-     margin-top: 16px;
+     margin-top: 20px;
 }
  .mediapagestatheader {
      font-size: 13px;
-     margin-top: 14px;
+     margin-top: 21px;
 }
  .mediapagestatcontent {
      font-size: 45px;
 }
+ .mediapagestatcontentsmall {
+     font-size: 13px;
+}
+ .mediapagestatcontentsmall li {     
+     margin-left: -12px;
+}
  .aboutpagestatheader {
      font-size: 13px;
-     margin-top: 14px;
+     margin-top: 17px;
 }
  .aboutpagestatcontent {
      font-size: 45px;
