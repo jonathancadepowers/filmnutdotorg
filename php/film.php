@@ -31,7 +31,7 @@ $result_minutes_watching = $conn->query($sql);
 while($row = $result_minutes_watching->fetch_assoc()) { $totalminutesoffilmwatched = $row["SUM(`running_time`)"]; };
 
 //Identify the top directors.
-$sql = "select `Directors`, count(*) from `film` group by `Directors` order by count(*) desc LIMIT 10";
+$sql = "select `Directors`, count(*) from `film` group by `Directors` order by count(*) desc LIMIT 15";
 $result_top_directors = $conn->query($sql);
 
 //Identify the top release years.
