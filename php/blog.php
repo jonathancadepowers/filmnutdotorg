@@ -47,7 +47,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 	<div id="container">
 		
 		<!-- Begin left column. -->
-		<div id="left">
+		<div id="left" style="top: 20px;">
 			
 			<!-- Get blog posts. -->
 			<?php
@@ -57,18 +57,38 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 					while($row = $result_blog_post_query->fetch_assoc()) {
 					    
-					    //Print the blog post's header.
-					    echo "<p class=\"blog_post_header\">" . $row["title"] . "</p>";
+					  echo "<div class=\"blog_post_container\">";
 
-						//Format the blog post's timestamp.
+					  //Format the blog post's timestamp.
 						$epoch = $row["timestamp"];
-					    $dt = new DateTime("@$epoch");				    
+					  $dt = new DateTime("@$epoch");
 
-					    //Print the blog post's timestamp/perm link.
-					    echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Posted " . $dt->format('F j, Y') . "</a></p>";
+					  //Handle a full blog post.
+					  if ( $row["is_mini"] == "false" ) {
 
-					    //Print the blog post's body.
-					    echo $row["body"];
+					  	//Print the blog post's header.
+					  	echo "<p class=\"blog_post_header\">" . $row["title"] . "</p>";
+
+					  	//Print the blog post's timestamp/perm link.
+					  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Blog Post from " . $dt->format('F j, Y') . "</a></p>";
+
+					  	//Print the blog post's body.
+					  echo $row["body"];
+
+					  }					  										    					  					  
+
+					  //Handle a mini blog post.
+					  if ( $row["is_mini"] == "true" ) {					  	
+
+					  	//Print the blog post's body.
+					  	echo "<p>" . $row["body"] . "</p>";
+
+					  	//Print the blog post's timestamp/perm link.
+					  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Mini Post from " . $dt->format('F j, Y') . "</a></p>";
+
+					  }
+
+					  echo "</div>";
 
 					}
 
@@ -89,18 +109,22 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 					echo "<p class=\"archive_header\">The Blog Archive</p>";
 
-					//Print a list of all blog posts.
+					//Print a list of all full blog posts.
 					echo "<ul>";
 
 					while($row = $result_blog_post_query->fetch_assoc()) {
 
 						//Format the blog post timestamp.
 						$epoch = $row["timestamp"];
-					    $dt = new DateTime("@$epoch");	
-					    
-					    echo "<li class=\"archive_list\"><a href=\"blog.php?id=" . $row["id"] . "\">" . $row["title"] . "</a> <span class=\"archive_list_timestamp\">(" . $dt->format('n/j/y') . ")</span></li>";
+					  $dt = new DateTime("@$epoch");	
+					    					  
+					  if ( $row["is_mini"] == "false" ) {
 
-					}					
+					  	echo "<li class=\"archive_list\"><a href=\"blog.php?id=" . $row["id"] . "\">" . $row["title"] . "</a> <span class=\"archive_list_timestamp\">(" . $dt->format('n/j/y') . ")</span></li>";
+
+						}
+
+					}							
 
 					echo "</ul>";
 

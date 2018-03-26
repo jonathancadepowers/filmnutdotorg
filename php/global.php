@@ -30,8 +30,6 @@ function db_connect() {
 function print_default_opening_head() {
 
     $head = "
-
-        <head>
     
             <meta content=\"text/html; charset=iso-8859-1\" http-equiv=\"Content-Type\">
 
@@ -40,6 +38,8 @@ function print_default_opening_head() {
             <link rel=\"icon\" type=\"image/png\" href=\"../images/fav.png\" sizes=\"32x32\" />
 
             <link href=\"../css/styles.css\" rel=\"stylesheet\" type=\"text/css\">
+
+            <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.0.8/css/all.css\" integrity=\"sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S\" crossorigin=\"anonymous\">
 
             <script src=\"../js/fc1321e1c1.js\"></script>
 
