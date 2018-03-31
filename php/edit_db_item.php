@@ -80,6 +80,28 @@ switch ($type) {
 
         break;
 
+    case "mini_blog_post":
+
+        if ( $action == "create" ) {
+
+            $body_html = "
+
+            <form action=\"admin.php\" id=\"edit_db_item\">
+            Body of the Mini Blog Post:<br><br><textarea name=\"post_body\" rows=\"10\" cols=\"100\"></textarea><br><br>            
+            <input type=\"hidden\" name=\"event\" value=\"new_mini_blog_post_submission\">
+            <input type=\"submit\" value=\"Submit\">
+            </form>
+
+            ";
+
+        } elseif ( $action == "edit" ) {
+
+            $body_html = "";
+
+        }
+
+        break;
+
 }
 
 ?>

@@ -18,7 +18,8 @@ function db_connect() {
         $database = "filmnut";
 
         //Set reporting level in local environment.
-        error_reporting(E_ALL & ~E_NOTICE);
+        //error_reporting(0);
+        //error_reporting(E_ALL & ~E_NOTICE);
         
     }
 

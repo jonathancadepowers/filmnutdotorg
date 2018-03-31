@@ -73,7 +73,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 					  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Blog Post from " . $dt->format('F j, Y') . "</a></p>";
 
 					  	//Print the blog post's body.
-					  echo $row["body"];
+					  echo htmlspecialchars_decode($row["body"]);
 
 					  }					  										    					  					  
 
@@ -81,7 +81,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 					  if ( $row["is_mini"] == "true" ) {					  	
 
 					  	//Print the blog post's body.
-					  	echo "<p>" . $row["body"] . "</p>";
+					  	echo "<p>" . htmlspecialchars_decode($row["body"]) . "</p>";
 
 					  	//Print the blog post's timestamp/perm link.
 					  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Mini Post from " . $dt->format('F j, Y') . "</a></p>";
