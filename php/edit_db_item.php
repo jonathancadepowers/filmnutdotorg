@@ -32,7 +32,7 @@ switch ($type) {
 
     	} elseif ( $action == "edit" ) {
 
-    		$body_html = "film - edit";
+    		$body_html = "film - edit"; //TODO
 
     	}
 
@@ -41,12 +41,12 @@ switch ($type) {
     case "show":
         
     	if ( $action == "create" ) {
-
-    		$body_html = "show - create";
+ 
+    		$body_html = "show - create"; //TODO
 
     	} elseif ( $action == "edit" ) {
 
-    		$body_html = "show - edit";
+    		$body_html = "show - edit"; //TODO
 
     	}
 
@@ -56,11 +56,11 @@ switch ($type) {
         
     	if ( $action == "create" ) {
 
-    		$body_html = "book - create";
+    		$body_html = "book - create"; //TODO
 
     	} elseif ( $action == "edit" ) {
 
-    		$body_html = "book - edit";
+    		$body_html = "book - edit"; //TODO
 
     	}
 
@@ -70,11 +70,11 @@ switch ($type) {
         
     	if ( $action == "create" ) {
 
-    		$body_html = "quote - create";
+    		$body_html = "quote - create"; //TODO
 
     	} elseif ( $action == "edit" ) {
 
-    		$body_html = "quote - edit";
+    		$body_html = "quote - edit"; //TODO
 
     	}
 
@@ -87,14 +87,14 @@ switch ($type) {
             $body_html = "
 
             <form action=\"admin.php\" id=\"edit_db_item\">
-            Body of the Mini Blog Post:<br><br><textarea name=\"post_body\" rows=\"10\" cols=\"100\"></textarea><br><br>            
+            Body of the mini blog post:<br><br><textarea name=\"post_body\" rows=\"10\" cols=\"100\"></textarea><br><br>            
             <input type=\"hidden\" name=\"event\" value=\"new_mini_blog_post_submission\">
             <input type=\"submit\" value=\"Submit\">
             </form>
 
             ";
 
-        } elseif ( $action == "edit" ) {
+        } elseif ( $action == "edit" ) { //TODO
 
             $body_html = "";
 
