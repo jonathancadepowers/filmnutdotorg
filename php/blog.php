@@ -153,8 +153,6 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 					default: //User has NOT requested the archive blog page.
 
-						echo "Fired";
-
 					  if ( !empty($tags) ) {					  
 
 					  	//Retrieve the number of tagged posts.
