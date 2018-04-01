@@ -21,6 +21,7 @@ switch (true) {
 
 	case ( isset($tags) ): //User has requested a specific tag page.
 		$sql = "SELECT * FROM blog where tags LIKE '%" . $tags . ";%' ORDER BY timestamp desc";
+		echo $sql;
 		break;
 
 	default: //User has requested the main blog page.
