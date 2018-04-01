@@ -20,7 +20,7 @@ switch (true) {
 		break;
 
 	case ( isset($tags) ): //User has requested a specific tag page.
-		$sql = "SELECT * FROM blog where tags LIKE '%" . $tags . ";%'";
+		$sql = "SELECT * FROM blog where tags LIKE '%" . $tags . ";%' ORDER BY timestamp desc";
 		break;
 
 	default: //User has requested the main blog page.
@@ -29,7 +29,7 @@ switch (true) {
 
 }
 
- $result_blog_post_query = $conn->query($sql);
+$result_blog_post_query = $conn->query($sql);
 
 //Set the last five films watched query.
 $sql = "SELECT * FROM film WHERE backdated <> \"Yes\" ORDER BY timestamp desc LIMIT 5";
@@ -86,7 +86,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						echo "</ul>";
 
 						echo "<p class=\"navigation_link\"><a href=\"blog.php\"><i class=\"fa fa-arrow-circle-o-left\" aria-hidden=\"true\" style=\"font-size: 14px;\"></i> Back to homepage...</a></p>";
-
+						
 						break;
 
 					default: //User has NOT requested the archive blog page.
