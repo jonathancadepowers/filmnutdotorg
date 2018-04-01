@@ -152,9 +152,33 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						break;
 
 					default: //User has NOT requested the archive blog page.
+
+					  if ( !empty($tags) ) {
+
+					  	//Retrieve the number of tagged posts.
+					  	$tagged_posts_count_as_integer = mysqli_num_rows($result_blog_post_query);
+
+					  	//Format the number of tagged posts as a word.
+					  	$f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+							$tagged_posts_count_as_words = $f->format( $tagged_posts_count_as_integer );
+
+							//Handle wording depending on the number of tagged posts.
+							$is_or_are = "are";
+							$post_or_posts = "posts";
+							if( $tagged_posts_count_as_integer == 1 ) {
+
+								$is_or_are = "is";
+								$post_or_posts = "post";
+
+							} 						  	
+
+					  }
+
+						//Print a tag teaser.
+						echo "<br><div id=\"tagteaser\">Below " . $is_or_are . " <b>" .  $tagged_posts_count_as_words . "</b> filmnut.org blog " . $post_or_posts . " tagged <span style=\"color: #EE686A; font-weight: bold;\">" . $tags . "</span></div><br>";
 				  
-						while($row = $result_blog_post_query->fetch_assoc()) {
-						    
+						while($row = $result_blog_post_query->fetch_assoc()) {						   						  
+
 						  echo "<div class=\"blog_post_container\">";
 
 						  //Format the blog post's timestamp.
@@ -212,7 +236,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						//If this is not a perm link page, provide a link to the blog archive. Otherwise, provide a link back to the homepage.
 						if ( empty($id) ) {
 
-							echo "<p class=\"navigation_link\"><i class=\"fa fa-arrow-circle-o-right\" style=\"color: #F06768; font-size: 14px;\" aria-hidden=\"true\"></i><a href=\"blog.php?archive=true\"> More blog posts...</a></p>";
+							echo "<p class=\"navigation_link\"><a href=\"blog.php\"><i class=\"fa fa-arrow-circle-o-left\" aria-hidden=\"true\" style=\"font-size: 14px; \"></i> Back to homepage...</a></p>";
 
 						} else {
 

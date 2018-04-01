@@ -242,6 +242,13 @@ blockquote {
      color: black;
      background-color: #FCF4A4;
 }
+#tagteaser {
+     background-color: #FCF4A4;
+     margin-left: 0px;
+     padding: 8px 10px 8px 10px;
+     font-size: 17px;
+     display: inline;
+}
 .bioheader {
      font-size: 20px;
 }
@@ -254,6 +261,7 @@ blockquote {
 }
 .tags a {
      color: black;
+     font-size: 11px;
 }
 .tags a:hover {
      color: #EE686A;
