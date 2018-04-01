@@ -99,30 +99,30 @@ $result_last_five_films_watched_query = $conn->query($sql);
 							$epoch = $row["timestamp"];
 						  $dt = new DateTime("@$epoch");
 
+						  //Extract the blog post's tags.
+					  	$tags_as_links = "";
+					  	if ( !empty($row["tags"]) ) {
+
+			  		  	$tags_array = explode( ";", $row["tags"] );				  		  	
+			  		  	foreach ($tags_array as &$tag) {
+
+			  					$new_tag = "<a href=\"blog.php?tag=" . $tag . "\"><i class=\"fas fa-tag\"></i> " . $tag . "</a>&nbsp;&nbsp;";
+
+			  					$tags_as_links = $tags_as_links . $new_tag;
+
+			  				}
+			  				
+			  				//Clean up the tags array, by ensuring that a blank tag doesn't get added to the end and also adding various formatting to it.
+			  				$tags_as_links = str_replace("<a href=\"blog.php?tag=\"><i class=\"fas fa-tag\"></i> </a>&nbsp;&nbsp;","",$tags_as_links);
+			  				$tags_as_links = "&nbsp;&nbsp;<span class=\"tags\">" . $tags_as_links . "</span>";
+
+					  	}
+
 						  //Handle a full blog post.
 						  if ( $row["is_mini"] == "false" ) {
 
 						  	//Print the blog post's header.
-						  	echo "<p class=\"blog_post_header\">" . $row["title"] . "</p>";
-
-						  	//Extract the blog post's tags.
-						  	$tags_as_links = "";
-						  	if ( !empty($row["tags"]) ) {
-
-				  		  	$tags_array = explode( ";", $row["tags"] );				  		  	
-				  		  	foreach ($tags_array as &$tag) {
-
-				  					$new_tag = "<a href=\"blog.php?tag=" . $tag . "\"><i class=\"fas fa-tag\"></i> " . $tag . "</a>&nbsp;&nbsp;";
-
-				  					$tags_as_links = $tags_as_links . $new_tag;
-
-				  				}
-				  				
-				  				//Clean up the tags array, by ensuring that a blank tag doesn't get added to the end and also adding various formatting to it.
-				  				$tags_as_links = str_replace("<a href=\"blog.php?tag=\"><i class=\"fas fa-tag\"></i> </a>&nbsp;&nbsp;","",$tags_as_links);
-				  				$tags_as_links = "&nbsp;&nbsp;<span class=\"tags\">" . $tags_as_links . "</span>";
-
-						  	}						  	
+						  	echo "<p class=\"blog_post_header\">" . $row["title"] . "</p>";						  		  	
 
 						  	//Print the blog post's timestamp/perm link.
 						  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Blog Post from " . $dt->format('F j, Y') . "</a>$tags_as_links</p>";
@@ -138,8 +138,8 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						  	//Print the blog post's body.
 						  	echo "<p>" . htmlspecialchars_decode($row["body"]) . "</p>";
 
-						  	//Print the blog post's timestamp/perm link.
-						  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Mini Post from " . $dt->format('F j, Y') . "</a></p>";
+						  	//Print the blog post's timestamp, perm link, and tag.
+						  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Mini Post from " . $dt->format('F j, Y') . "</a>$tags_as_links</p>";
 
 						  }
 
