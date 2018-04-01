@@ -170,12 +170,12 @@ $result_last_five_films_watched_query = $conn->query($sql);
 								$is_or_are = "is";
 								$post_or_posts = "post";
 
-							} 						  	
+							}
+
+							//Print a tag teaser.
+							echo "<br><div id=\"tagteaser\">Below " . $is_or_are . " <b>" .  $tagged_posts_count_as_words . "</b> filmnut.org blog " . $post_or_posts . " tagged <span style=\"color: #EE686A; font-weight: bold;\">" . $tags . "</span></div><br>";				  	
 
 					  }
-
-						//Print a tag teaser.
-						echo "<br><div id=\"tagteaser\">Below " . $is_or_are . " <b>" .  $tagged_posts_count_as_words . "</b> filmnut.org blog " . $post_or_posts . " tagged <span style=\"color: #EE686A; font-weight: bold;\">" . $tags . "</span></div><br>";
 				  
 						while($row = $result_blog_post_query->fetch_assoc()) {						   						  
 
