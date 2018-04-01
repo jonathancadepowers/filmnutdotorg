@@ -258,6 +258,12 @@ blockquote {
 .tags a:hover {
      color: #EE686A;
 }
+.tag_cloud_tags {
+     font-size: 20px;
+     line-height: 40px;
+     margin-top: 20px;
+     margin-left: 15px;
+}
 input[type=text], input[type=password] {
      margin-top: 4px;
      height: 25px;
@@ -268,12 +274,12 @@ input[type=text], input[type=password] {
      border-radius: 4px;
      background-color: #cbced0;
      border: 1px solid #cbced0;
-     padding: 6px 12px
+     padding: 6px 12px;
 }
 select {
      border: none;
      font-size: 16px;
-     background-color: #cbced0
+     background-color: #cbced0;
 }
 #edit_db_item {}
 /* ---------->>> CUSTOM FONTS <<<-----------*/

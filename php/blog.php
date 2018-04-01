@@ -64,7 +64,69 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 					case ( isset($archive) && $archive == 'true' ): //User has requested the archive blog page.
 						
-						echo "<p class=\"archive_header\">The Blog Archive</p>";
+						//Build the tag cloud.
+
+						//Create a final array that will contain all of the individual tags.				
+						$result_all_tags_as_array = array();
+
+						//Query the database for all blog posts. Return the tag column value for each one.
+						$sql = "SELECT tags FROM blog";
+						$result_all_tags_raw = $conn->query($sql);
+						
+						//Iterate over each tag set returned by the database.
+						//A tag set may contain multiple individual tags (separated by semi-colons).
+						while($row = $result_all_tags_raw->fetch_assoc()) {
+
+							//Create a temporary array containing each tag in the current tag set.
+							//Use explode() to separate out each tag in the set.
+							$new_tag_set = explode( ";", $row["tags"] );
+
+							//Iterate over the temporary array, adding each new tag to the final array.
+							foreach ($new_tag_set as &$tag) {
+
+		  					//Only insert the tag into the final array if it does not already exist within the array AND if its length is greater than zero.
+		  					if (!in_array($tag, $result_all_tags_as_array)) {
+		  					    
+		  					    if ( strlen($tag) > 0 ) {
+
+		  					    	$result_all_tags_as_array[] = $tag;
+
+		  					    }
+		  					    
+		  					}
+
+			  			}
+
+						}
+
+						echo "<p class=\"archive_header\">Topics Discussed</p>";
+
+						echo "Each blog post is tagged with a keyword. Explore using the available tags:";
+
+						echo "<div class=\"tag_cloud_tags\">";
+
+						//Print the tag cloud.
+						$i = 0;
+						$len = count($result_all_tags_as_array);
+						foreach ($result_all_tags_as_array as &$tag) {							
+
+							if ( $i == $len - 1 ) { //Handle the last iteration.
+
+								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a>";
+
+ 							} else { //Handle all other iterations.
+
+ 								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a>&nbsp; <span style=\"color: #EEEEEE;\">/</span> &nbsp;";
+
+ 							}
+
+							$i++;
+
+						}
+
+						echo "</div>";
+
+						echo "<p class=\"archive_header\">Every Full Blog Post</p>";
 
 						//Print a list of all full blog posts.
 						echo "<ul>";
