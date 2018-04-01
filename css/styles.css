@@ -252,6 +252,12 @@ blockquote {
      margin-top: 15px;
      display: inline-block;
 }
+.tags a {
+     color: black;
+}
+.tags a:hover {
+     color: #EE686A;
+}
 input[type=text], input[type=password] {
      margin-top: 4px;
      height: 25px;
