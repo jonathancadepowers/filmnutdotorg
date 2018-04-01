@@ -153,14 +153,17 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 					default: //User has NOT requested the archive blog page.
 
-					  if ( !empty($tags) ) {
+						echo "Fired";
+
+					  if ( !empty($tags) ) {					  
 
 					  	//Retrieve the number of tagged posts.
 					  	$tagged_posts_count_as_integer = mysqli_num_rows($result_blog_post_query);
 
+					  	//TODO: This logic is commented out, because filmnut's Heroku PHP environment doesn't support the NumberFormatter class. This needs to be enabeled within Heroku.
 					  	//Format the number of tagged posts as a word.
-					  	$f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-							$tagged_posts_count_as_words = $f->format( $tagged_posts_count_as_integer );
+					  	//$f = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+							//$tagged_posts_count_as_words = $f->format( $tagged_posts_count_as_integer );
 
 							//Handle wording depending on the number of tagged posts.
 							$is_or_are = "are";
@@ -173,7 +176,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 							}
 
 							//Print a tag teaser.
-							echo "<br><div id=\"tagteaser\">Below " . $is_or_are . " <b>" .  $tagged_posts_count_as_words . "</b> filmnut.org blog " . $post_or_posts . " tagged <span style=\"color: #EE686A; font-weight: bold;\">" . $tags . "</span></div><br>";				  	
+							echo "<br><div id=\"tagteaser\">Below " . $is_or_are . " <b>" .  $tagged_posts_count_as_integer . "</b> filmnut.org blog " . $post_or_posts . " tagged <span style=\"color: #EE686A; font-weight: bold;\">" . $tags . "</span></div><br>";				  	
 
 					  }
 				  
