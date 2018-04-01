@@ -101,7 +101,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 						echo "<p class=\"archive_header\">Topics Discussed</p>";
 
-						echo "Each blog post is tagged with keywords. Explore using the following tags:";
+						echo "Each blog post is tagged with keywords. Explore by tag:";
 
 						echo "<div class=\"tag_cloud_tags\">";
 
