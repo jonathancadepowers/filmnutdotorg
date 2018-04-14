@@ -87,7 +87,8 @@ switch ($type) {
             $body_html = "
 
             <form action=\"admin.php\" id=\"edit_db_item\">
-            Body of the mini blog post:<br><br><textarea name=\"post_body\" rows=\"10\" cols=\"100\"></textarea><br><br>            
+            Body of the mini blog post:<br><br><textarea name=\"post_body\" rows=\"10\" cols=\"100\"></textarea><br><br>
+            Tags: <input type=\"text\" name=\"tags\" size=\"40\"><br><br>
             <input type=\"hidden\" name=\"event\" value=\"new_mini_blog_post_submission\">
             <input type=\"submit\" value=\"Submit\">
             </form>

@@ -3,7 +3,7 @@
 require('global.php');
 
 //If URL parameters were posted, react to them.
-if ( isset($_GET["event"]) ) {
+if ( !empty($_GET["event"]) ) {
 
 	$type = htmlspecialchars($_GET["event"]);
 
@@ -12,16 +12,23 @@ if ( isset($_GET["event"]) ) {
 
 	$now = time();
 
-	//Get more URL parameters.
-	$film = htmlspecialchars($_GET["film"]);
-	$url = htmlspecialchars($_GET["url"]);
-	$rating = htmlspecialchars($_GET["rating"]);
-	$backdated = htmlspecialchars($_GET["backdated"]);
-	$directors = htmlspecialchars($_GET["directors"]);
-	$release_year = htmlspecialchars($_GET["release_year"]);
-	$running_time = htmlspecialchars($_GET["running_time"]);
-	$post_body = htmlspecialchars($_GET["post_body"]);
-	$db_result_message = "";
+	//Get more URL parameters.	
+	switch ($type) {
+	    case "new_film_submission":
+	        $film = htmlspecialchars($_GET["film"]);
+	        $url = htmlspecialchars($_GET["url"]);
+	        $rating = htmlspecialchars($_GET["rating"]);
+	        $backdated = htmlspecialchars($_GET["backdated"]);
+	        $directors = htmlspecialchars($_GET["directors"]);
+	        $release_year = htmlspecialchars($_GET["release_year"]);
+	        $running_time = htmlspecialchars($_GET["running_time"]);
+	        break;
+	    case "new_mini_blog_post_submission":
+	 				$post_body = htmlspecialchars($_GET["post_body"]);
+	 				$tags = htmlspecialchars($_GET["tags"]);
+	 				$db_result_message = "";       
+	        break;
+	}
 
 		switch ($type) {
 		    case "new_film_submission":
@@ -43,7 +50,7 @@ if ( isset($_GET["event"]) ) {
 
 		  	case "new_mini_blog_post_submission":
 
-		    	$sql = "INSERT INTO blog (body, timestamp, is_mini) VALUES (\"{$post_body}\",\"{$now}\",\"true\")";
+		    	$sql = "INSERT INTO blog (body, timestamp, is_mini, tags) VALUES (\"{$post_body}\",\"{$now}\",\"true\",\"{$tags}\")";
 
 		    	if ($conn->query($sql) === TRUE) {
 
