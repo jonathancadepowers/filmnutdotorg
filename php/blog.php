@@ -214,8 +214,17 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						  	//Print the blog post's timestamp/perm link.
 						  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Blog Post from " . $dt->format('F j, Y') . "</a>$tags_as_links</p>";
 
-						  	//Print the blog post's body.
-						  	echo htmlspecialchars_decode($row["body"]);
+						  	//Handle the blog post's extended body, if necessary.
+						  	$full_post = htmlspecialchars_decode($row["body"]);
+						  	if ( isset($id) ) {
+
+						  		//Append the blog post's body to its extended body.
+						  		$full_post = $full_post . htmlspecialchars_decode($row["body_extended"]);
+
+						  	}						  	
+
+						  	//Print the blog post's full body.						
+						  	echo $full_post;
 
 						  }					  										    					  					  
 
