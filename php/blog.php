@@ -243,8 +243,8 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 						}
 
-						//If this is not a perm link page, provide a link to the blog archive. Otherwise, provide a link back to the homepage.
-						if ( empty($id) ) {
+						//If this is not a perm link page and not a tag page, provide a link to the blog archive. Otherwise, provide a link back to the homepage.
+						if ( empty($id) and empty($tags) ) {
 
 							echo "<p class=\"navigation_link\"><a href=\"blog.php?archive=true\"><i class=\"fa fa-arrow-circle-o-right\" aria-hidden=\"true\" style=\"font-size: 14px; \"></i> More blog posts...</a></p>";
 
