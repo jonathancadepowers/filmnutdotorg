@@ -142,7 +142,8 @@ blockquote {
      background-color: white;
 }
 .external_links {
-     font-size: 30px;
+     font-size: 38px;
+     margin-top: -6px;
 }
 .external_links a {
      text-decoration: none;

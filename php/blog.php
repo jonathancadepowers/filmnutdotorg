@@ -24,7 +24,7 @@ switch (true) {
 		break;
 
 	default: //User has requested the main blog page.
-    $sql = "SELECT * FROM blog ORDER BY timestamp desc LIMIT 10";
+    $sql = "SELECT * FROM blog ORDER BY timestamp desc LIMIT 20";
     break;
 
 }
@@ -246,7 +246,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						//If this is not a perm link page, provide a link to the blog archive. Otherwise, provide a link back to the homepage.
 						if ( empty($id) ) {
 
-							echo "<p class=\"navigation_link\"><a href=\"blog.php\"><i class=\"fa fa-arrow-circle-o-left\" aria-hidden=\"true\" style=\"font-size: 14px; \"></i> Back to homepage...</a></p>";
+							echo "<p class=\"navigation_link\"><a href=\"blog.php?archive=true\"><i class=\"fa fa-arrow-circle-o-right\" aria-hidden=\"true\" style=\"font-size: 14px; \"></i> More blog posts...</a></p>";
 
 						} else {
 
@@ -274,8 +274,6 @@ $result_last_five_films_watched_query = $conn->query($sql);
 				<a target="_blank" href="https://twitter.com/filmnut"><i class="fa fa-twitter-square" aria-hidden="true"></i></a> 
 				<a target="_blank" href="https://www.instagram.com/jonathanpowers/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 				<a target="_blank" href="https://github.com/jonathancadepowers"><i class="fa fa-github" aria-hidden="true"></i></a> 
-				<a target="_blank" href="https://www.youtube.com/playlist?list=LLW0do5SbMoOvxBqnZzMFzeQ"><i class="fa fa-youtube" aria-hidden="true"></i></a> 
-				<a target="_blank" href="https://www.last.fm/user/afilmnut"><i class="fa fa-lastfm-square" aria-hidden="true"></i></a> 
 			</div>
 
 			<p style="margin-bottom: -10px;">
