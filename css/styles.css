@@ -291,6 +291,7 @@ blockquote {
      background-color: #EEEEEE;
      padding: 15px;
      border-radius: 15px;
+     width: 90%
 }
 .tag_count {
      font-size: 9px;
