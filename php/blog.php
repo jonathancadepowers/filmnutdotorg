@@ -108,9 +108,6 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 						}
 
-						//Sort the non-dup tag array in alphabetical order.
-						asort($result_all_tags_as_array_without_dups); 
-
 						echo "<p class=\"archive_header\">Topics Discussed</p>";
 
 						echo "Each blog post is tagged with keywords. Explore by tag:";
@@ -120,17 +117,26 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						//Print the tag cloud.
 						$i = 0;
 						$len = count($result_all_tags_as_array_without_dups);
-						echo "<ul>";
 						foreach ($result_all_tags_as_array_without_dups as &$tag) {							
 
 							//Count the number of items the tag appears across all blog posts.
 							$count = array_count_values_of($tag, $result_all_tags_as_array_with_dups);
 
-							echo "<li><a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a> <span class=\"tag_count\">(" . $count . ")</span></li>";
+							if ( $i == $len - 1 ) { //Handle the last iteration.
+
+								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a> <span class=\"tag_count\">(" . $count . ")</span>";
+
+ 							} else { //Handle all other iterations.
+
+ 								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a> <span class=\"tag_count\">(" . $count . ")</span>&nbsp; <span style=\"color: #EEEEEE;\">/</span> &nbsp;";
+
+ 							}
+
+							$i++;
 
 						}
 
-						echo "</ul></div>";
+						echo "</div>";
 
 						echo "<p class=\"archive_header\">Every Full Blog Post</p>";
 

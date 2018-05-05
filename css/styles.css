@@ -285,13 +285,15 @@ blockquote {
      color: #EE686A;
 }
 .tag_cloud_tags {
-     font-size: 14px;
-     margin-left: -10px;
+     font-size: 16px;
+     line-height: 40px;
+     margin-top: 20px;
+     margin-left: 15px;
 }
 .tag_count {
-     font-size: 11px;
+     font-size: 9px;
      position: relative;
-     top: -2px;
+     top: -6px;
 }
 input[type=text], input[type=password] {
      margin-top: 4px;
