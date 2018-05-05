@@ -286,14 +286,18 @@ blockquote {
 }
 .tag_cloud_tags {
      font-size: 16px;
-     line-height: 40px;
+     line-height: 29px;
      margin-top: 20px;
-     margin-left: 15px;
+     background-color: #EEEEEE;
+     padding: 15px;
+     border-radius: 15px;
 }
 .tag_count {
      font-size: 9px;
      position: relative;
      top: -6px;
+     color: #EE686A;
+     margin-left: 1.5px;
 }
 input[type=text], input[type=password] {
      margin-top: 4px;
