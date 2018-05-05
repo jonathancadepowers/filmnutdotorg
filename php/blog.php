@@ -129,11 +129,11 @@ $result_last_five_films_watched_query = $conn->query($sql);
 							$size = "";
 							if ($count > 3) {
 
-								$size = " style=\"font-size: 28px !important;\" ";
+								$size = " style=\"font-size: 28px !important;\"";
 
 							}
 
-							echo "<a" . $size . "href=\"blog.php?tag=". $tag . "\">" . $tag . "</a><span class=\"tag_count\">(" . $count . ")</span> &nbsp;";
+							echo "<a" . $size . " href=\"blog.php?tag=". $tag . "\">" . $tag . "</a><span class=\"tag_count\">(" . $count . ")</span> &nbsp;";
 
 						}
 
