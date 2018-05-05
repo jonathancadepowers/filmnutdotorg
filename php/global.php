@@ -156,3 +156,9 @@ function dateDifference($date_1, $date_2, $differenceFormat)
     return $interval->format($differenceFormat);
     
 }
+
+//Returns the number times that a specified value exists in an array.
+function array_count_values_of($value, $array) {
+    $counts = array_count_values($array);
+    return $counts[$value];
+}

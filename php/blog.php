@@ -66,9 +66,14 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						
 						//Build the tag cloud.
 
-						//Create a final array that will contain all of the individual tags.				
-						$result_all_tags_as_array = array();
+						//Create a final array that will contain all of the individual tags.
+						//This array does NOT contain duplicates.	
+						$result_all_tags_as_array_without_dups = array();
 
+						//Create a final array that will contain all of the individual tags.
+						//This array DOES contain duplicates.	
+						$result_all_tags_as_array_wit_dups = array();
+						
 						//Query the database for all blog posts. Return the tag column value for each one.
 						$sql = "SELECT tags FROM blog";
 						$result_all_tags_raw = $conn->query($sql);
@@ -84,16 +89,20 @@ $result_last_five_films_watched_query = $conn->query($sql);
 							//Iterate over the temporary array, adding each new tag to the final array.
 							foreach ($new_tag_set as &$tag) {
 
-		  					//Only insert the tag into the final array if it does not already exist within the array AND if its length is greater than zero.
-		  					if (!in_array($tag, $result_all_tags_as_array)) {
-		  					    
-		  					    if ( strlen($tag) > 0 ) {
+								//Only insert the tag into the final arrays if it it's not empty.
+								if ( strlen($tag) > 0 ) {
 
-		  					    	$result_all_tags_as_array[] = $tag;
+									//Push the tag into the array with dups.
+									$result_all_tags_as_array_with_dups[] = $tag;
 
-		  					    }
-		  					    
-		  					}
+									//If the tag doesn't already exist in the array without dups, push it in.
+									if (!in_array($tag, $result_all_tags_as_array_without_dups)) {
+
+										$result_all_tags_as_array_without_dups[] = $tag;
+
+									}
+
+								}		  						  				
 
 			  			}
 
@@ -107,16 +116,19 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 						//Print the tag cloud.
 						$i = 0;
-						$len = count($result_all_tags_as_array);
-						foreach ($result_all_tags_as_array as &$tag) {							
+						$len = count($result_all_tags_as_array_without_dups);
+						foreach ($result_all_tags_as_array_without_dups as &$tag) {							
+
+							//Count the number of items the tag appears across all blog posts.
+							$count = array_count_values_of($tag, $result_all_tags_as_array_with_dups);
 
 							if ( $i == $len - 1 ) { //Handle the last iteration.
 
-								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a>";
+								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a> <span class=\"tag_count\">(" . $count . ")</span>";
 
  							} else { //Handle all other iterations.
 
- 								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a>&nbsp; <span style=\"color: #EEEEEE;\">/</span> &nbsp;";
+ 								echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a> <span class=\"tag_count\">(" . $count . ")</span>&nbsp; <span style=\"color: #EEEEEE;\">/</span> &nbsp;";
 
  							}
 

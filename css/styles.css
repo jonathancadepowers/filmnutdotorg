@@ -290,6 +290,12 @@ blockquote {
      margin-top: 20px;
      margin-left: 15px;
 }
+.tag_count {
+     font-size: 11px;
+     position: relative;
+     top: -2px;
+     color: grey;
+}
 input[type=text], input[type=password] {
      margin-top: 4px;
      height: 25px;
