@@ -122,19 +122,15 @@ $result_last_five_films_watched_query = $conn->query($sql);
 							//Count the number of items the tag appears across all blog posts.
 							$count = array_count_values_of($tag, $result_all_tags_as_array_with_dups);
 
-							echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a><span class=\"tag_count\">(" . $count . ")</span> &nbsp;";
+							//Increase the font size if the tag has a high count.
+							$size = "";
+							if ($count > 3) {
 
-							// if ( $i == $len - 1 ) { //Handle the last iteration.
+								$size = " style=\"font-size: 28px !important;\" ";
 
-								
+							}
 
- 						// 	} else { //Handle all other iterations.
-
- 						// 		echo "<a href=\"blog.php?tag=". $tag . "\">" . $tag . "</a> <span class=\"tag_count\">(" . $count . ")</span>&nbsp; <span style=\"color: #EEEEEE;\">/</span> &nbsp;";
-
- 						// 	}
-
-							// $i++;
+							echo "<a" . $size . "href=\"blog.php?tag=". $tag . "\">" . $tag . "</a><span class=\"tag_count\">(" . $count . ")</span> &nbsp;";
 
 						}
 
