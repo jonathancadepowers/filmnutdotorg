@@ -108,6 +108,9 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 						}
 
+						//Sorting the non-dup tag array in alphabetical order.
+						asort($result_all_tags_as_array_without_dups);
+
 						echo "<p class=\"archive_header\">Topics Discussed</p>";
 
 						echo "Each blog post is tagged with keywords. Explore by tag:";
