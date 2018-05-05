@@ -277,16 +277,16 @@ blockquote {
      margin-top: 15px;
      display: inline-block;
 }
-.tags a {
-     color: black;
-     font-size: 11px;
+.tag_cloud_tags a {
+     box-shadow: none;
 }
-.tags a:hover {
-     color: #EE686A;
+.tag_cloud_tags a:hover {
+     text-decoration: underline;
+     background-color: #EEEEEE;
 }
 .tag_cloud_tags {
      font-size: 16px;
-     line-height: 29px;
+     line-height: 30px;
      margin-top: 20px;
      background-color: #EEEEEE;
      padding: 15px;
@@ -298,7 +298,7 @@ blockquote {
      position: relative;
      top: -6px;
      color: #EE686A;
-     margin-left: 1.5px;
+     margin-left: 2px;
 }
 input[type=text], input[type=password] {
      margin-top: 4px;
