@@ -206,14 +206,14 @@ $result_last_five_films_watched_query = $conn->query($sql);
 			  		  	$tags_array = explode( ";", $row["tags"] );				  		  	
 			  		  	foreach ($tags_array as &$tag) {
 
-			  					$new_tag = "<a href=\"blog.php?tag=" . $tag . "\"><i class=\"fas fa-tag\"></i> " . $tag . "</a>&nbsp;&nbsp;";
+			  					$new_tag = "<i style=\"color:black; font-size: 12px;\" class=\"fas fa-tag\"></i> <a href=\"blog.php?tag=" . $tag . "\">" . $tag . "</a>&nbsp;&nbsp;";
 
 			  					$tags_as_links = $tags_as_links . $new_tag;
 
 			  				}
 			  				
 			  				//Clean up the tags array, by ensuring that a blank tag doesn't get added to the end and also adding various formatting to it.
-			  				$tags_as_links = str_replace("<a href=\"blog.php?tag=\"><i class=\"fas fa-tag\"></i> </a>&nbsp;&nbsp;","",$tags_as_links);
+			  				$tags_as_links = str_replace("<i style=\"color:black; font-size: 12px;\" class=\"fas fa-tag\"></i> <a href=\"blog.php?tag=\"></a>&nbsp;&nbsp;","",$tags_as_links);
 			  				$tags_as_links = "&nbsp;&nbsp;<span class=\"tags\">" . $tags_as_links . "</span>";
 
 					  	}

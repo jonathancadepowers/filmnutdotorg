@@ -110,7 +110,7 @@ blockquote {
      font-size: 12px;
 }
 .blog_post_timestamp a:hover {
-     text-decoration: none;
+     text-decoration: underline;
      color: #F06768;
      background-color: white;
 }
@@ -276,6 +276,13 @@ blockquote {
      font-size: 17px;
      margin-top: 15px;
      display: inline-block;
+}
+.tags a {
+     text-decoration: none;
+     color: black !important;
+}
+.tags a:hover {
+     text-decoration: underline;
 }
 .tag_cloud_tags a {
      box-shadow: none;
