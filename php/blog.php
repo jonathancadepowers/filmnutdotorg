@@ -314,8 +314,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 				<b>Other Cool-ish Stuf:</b>
 			
 				<ul>
-					<li><a href="blog.php?archive=true">Every blog post I've ever made.</a></li>
-					<li><a href="https://www.youtube.com/playlist?list=PLCVz03lD2vD9TCBqyktmBUoBgLV33n25p" target="_blank">A list of movies I want to see.</a></li>
+					<li><a href="blog.php?archive=true">Every blog post ever.</a></li>
 					<li><a href="blog.php?id=22">My Top 100 Films list (2017 Edition).</a></li>
 					<li><a href="https://www.laserfiche.com/solutionexchange/zeno-imaging-revamped-customer-order-process-laserfiche-forms/" target="_blank">An article written about an ECM system that I built.</a></li>
 					<li><a href="https://vimeo.com/filmnut" target="_blank">My Vimeo videos.</a></li>
