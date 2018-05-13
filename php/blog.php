@@ -92,12 +92,6 @@ $result_last_five_films_watched_query = $conn->query($sql);
 								//Only insert the tag into the final arrays if it it's not empty.
 								if ( strlen($tag) > 0 ) {
 
-									if ($tag == "paul thomas anderson") {
-
-										echo 1;
-
-									}
-
 									//Push the tag into the array with dups.
 									$result_all_tags_as_array_with_dups[] = $tag;
 
