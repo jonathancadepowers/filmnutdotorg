@@ -20,7 +20,7 @@ switch (true) {
 		break;
 
 	case ( isset($tags) ): //User has requested a specific tag page.
-		$sql = "SELECT * FROM blog where tags LIKE '%" . $tags . ";%' ORDER BY timestamp desc";
+		$sql = "SELECT * FROM blog where tags LIKE '%" . $conn->real_escape_string($tags) . ";%' ORDER BY timestamp desc";
 		break;
 
 	default: //User has requested the main blog page.
@@ -92,6 +92,12 @@ $result_last_five_films_watched_query = $conn->query($sql);
 								//Only insert the tag into the final arrays if it it's not empty.
 								if ( strlen($tag) > 0 ) {
 
+									if ($tag == "paul thomas anderson") {
+
+										echo 1;
+
+									}
+
 									//Push the tag into the array with dups.
 									$result_all_tags_as_array_with_dups[] = $tag;
 
@@ -120,7 +126,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						//Print the tag cloud.
 						$i = 0;
 						$len = count($result_all_tags_as_array_without_dups);
-						foreach ($result_all_tags_as_array_without_dups as &$tag) {							
+						foreach ($result_all_tags_as_array_without_dups as &$tag) {		
 
 							//Count the number of items the tag appears across all blog posts.
 							$count = array_count_values_of($tag, $result_all_tags_as_array_with_dups);
