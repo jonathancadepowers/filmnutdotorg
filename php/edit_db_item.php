@@ -86,6 +86,8 @@ switch ($type) {
 
             $body_html = "
 
+            <p><a href=\"https://htmleditor.io/\" target=\"_blank\">WYSIWYG Editor</a> | <a href=\"https://bigblackrobot.imgur.com/all/\" target=\"_blank\">Upload Images</a></p>
+
             <form action=\"admin.php\" id=\"edit_db_item\">
             Body of the mini blog post:<br><br><textarea name=\"post_body\" rows=\"10\" cols=\"100\"></textarea><br><br>
             Tags: <input type=\"text\" name=\"tags\" size=\"40\"><br><br>
