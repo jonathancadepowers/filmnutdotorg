@@ -227,14 +227,25 @@ $result_last_five_films_watched_query = $conn->query($sql);
 						  	//Print the blog post's timestamp/perm link.
 						  	echo "<p class=\"blog_post_timestamp\"><i class=\"fa fa-clock-o\" aria-hidden=\"true\" style=\"color: #F06768; font-size: 12px;\"></i> <a href=\"blog.php?id=" . $row["id"] . "\">Blog Post from " . $dt->format('F j, Y') . "</a>$tags_as_links</p>";
 
-						  	//Handle the blog post's extended body, if necessary.
+						  	//Handle the blog post's extended body.
 						  	$full_post = htmlspecialchars_decode($row["body"]);
 						  	if ( isset($id) ) {
 
-						  		//Append the blog post's body to its extended body.
-						  		$full_post = $full_post . htmlspecialchars_decode($row["body_extended"]);
+						  		//If the user has requested a specific blog post (i.e., if they are not on the homepage), append the blog post's body to its extended body.
+						  		
+						  		$full_post = $full_post . htmlspecialchars_decode($row["body_extended"]);					  		
 
-						  	}						  	
+						  	} else {
+
+					  			if ( $row["body"] ) {
+
+					  				//If the user has NOT requested a specific blog post (i.e., if they ARE on the homepage), check to see if the post has an extended body. If so, append a "continue reading..." link to the blog post, so that the user can browse to the blog post's dedicated page and see all of its content.
+
+					  				$full_post = $full_post . "<p><a href=\"blog.php?id=" . $row["id"] . "\">Continue reading...</a></p>";
+
+					  			}
+
+						  	}					  	
 
 						  	//Print the blog post's full body.						
 						  	echo $full_post;
