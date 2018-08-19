@@ -343,3 +343,7 @@ select {
      font-weight: normal;
      font-style: normal;
 }
+.image_caption {
+  margin-top: 2px;
+  margin-bottom: 40px;
+}
