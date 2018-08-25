@@ -237,7 +237,7 @@ $result_last_five_films_watched_query = $conn->query($sql);
 
 						  	} else {
 
-					  			if ( $row["body"] ) {
+					  			if ( $row["body_extended"] ) {
 
 					  				//If the user has NOT requested a specific blog post (i.e., if they ARE on the homepage), check to see if the post has an extended body. If so, append a "continue reading..." link to the blog post, so that the user can browse to the blog post's dedicated page and see all of its content.
 
