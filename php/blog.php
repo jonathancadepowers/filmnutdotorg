@@ -297,7 +297,9 @@ $result_last_five_films_watched_query = $conn->query($sql);
 			<div class="external_links">
 				<a target="_blank" href="https://twitter.com/filmnut"><i class="fa fa-twitter-square" aria-hidden="true"></i></a> 
 				<a target="_blank" href="https://www.instagram.com/jonathanpowers/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-				<a target="_blank" href="https://github.com/jonathancadepowers"><i class="fa fa-github" aria-hidden="true"></i></a> 
+				<a target="_blank" href="https://github.com/jonathancadepowers"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <a target="_blank" href="https://www.linkedin.com/in/jpow"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+
 			</div>
 
 			<p style="margin-bottom: -10px;">
