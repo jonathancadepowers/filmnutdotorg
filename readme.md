@@ -1,6 +1,14 @@
-# Step 1. Setup & Configuration
+# WUSA Softball Scheduler - Technical Documentation
 
-Load the configuration file, which is structured as followed:
+## Overview
+
+This document describes how the WUSA softball scheduling program generates game schedules from a YAML configuration file.
+
+---
+
+# Step 1: Setup & Configuration
+
+Load the configuration file, which is structured as follows:
 
 ```
 Facilities
@@ -14,23 +22,25 @@ Facilities
 
 Divisions
   └─ Division Name (e.g., 7U)
-      ├─ Season Start Date:
-      ├─ Season End Date:
-      └─ Teams Listed By Name:
+      ├─ Season Start Date
+      ├─ Season End Date
+      └─ Teams Listed By Name
 
 Blackout Dates
   └─ Dates on Which No Games Can Be Scheduled For Any Division/Facility
-  ```
+```
 
-*Note:* The program implicitly assumes all times are expressed in CST. 
+*Note:* The program implicitly assumes all times are expressed in local time (timezone-naive). 
+
+---
 
 # Step 2: Identify Available Slots
 
 Build a dictionary of all available "slots" across all fields, organized by week. Do not yet schedule any games.
 
-Example Output:
+**Example Output:**
 
-```
+```python
 slots_by_week = {
     38: [
         (date(2025-09-15), Field(SC1), "18:00", Facility(South Campus)),
@@ -43,30 +53,36 @@ slots_by_week = {
         (date(2025-09-15), Field(SC2), "18:00", Facility(South Campus)),
         (date(2025-09-15), Field(SC2), "19:30", Facility(South Campus)),
         # ... hundreds more slots for SC2, SC3, SC4, SC5, McGovern, etc.
-    ]
-    # And so on for all additional weeks. 
-    # The starting week is calculated from the earliest (min) `begin_date` across all divisions in the .yml file. 
-    # The ending week is calculated from the latest (max) `end_date` across all divisions in the .yml file.
+    ],
+    39: [ ... ],  # Week 39 slots
+    40: [ ... ],  # Week 40 slots
+    # ... continues through end of season
+}
 ```
+
+*Note:* The starting week is calculated from the earliest (min) `begin_date` across all divisions in the .yml file. The ending week is calculated from the latest (max) `end_date` across all divisions in the .yml file.
+
+---
 
 # Step 3: Allocate Slots to Divisions
 
-Build a flat dictionary (not organized by week or any other grouping) which assigns slots to divisions. Do not yet schedule any games
+Build a flat dictionary (not organized by week or any other grouping) which assigns slots to divisions. Do not yet schedule any games.
 
 This step adheres to the following rules/assumptions:
 
-- **Division Demand for Games:** Games needed per week for a division = ( number of teams ÷ 2 )
-- **Process One Week at a Time:** Example: Don't fill all of Week 38 before moving to week 39. Instead, process Week 38 fully, then Week 39, then week 40, etc. This ensures fair distribution across the entire season.
+- **Division Demand for Games:** Games needed per week for a division = (number of teams ÷ 2)
+- **Process One Week at a Time:** Don't fill all of Week 38 before moving to Week 39. Instead, process Week 38 fully, then Week 39, then Week 40, etc. This ensures fair distribution across the entire season.
 - **Ignore Inactive Divisions:** If a division's start/end date doesn't fall within a week, don't assign it any slots for the week in question.
 - **Prioritization Logic:** When assigning a division to a slot, the program follows a three-level priority hierarchy (honored in the order listed below): 
   - *Continuity:* If a division is already using a field during the current *week* and still needs games, give them the slot in question.
   - *Same-Day Preference:* Avoid assigning different divisions to the same field on the same day when possible.
   - *Division Priorities:* Consult the field's `division_priorities` values in the configuration file in order and assign slots to the first division that needs games.
-  *Note:* The top-order in which facilities/fields are listed within the configuration file also impacts the prioritization logic. Example: The first field listed will be processed first.
 
-Example Output:
+*Note:* The top-down order in which facilities/fields are listed within the configuration file also impacts prioritization. Fields listed first are processed first, giving them priority access to divisions before later fields are considered.
 
-```
+**Example Output:**
+
+```python
 slot_assignments = {
     # Week 38 - Only 10U and 12U are active (7U, 8U, 9U start Sept 22)
     ("SC1", date(2025-09-15), "18:00"): "10U",
@@ -109,7 +125,10 @@ slot_assignments = {
     ("SC3", date(2025-09-25), "18:00"): "9U",
     ("SC3", date(2025-09-25), "19:30"): "9U",
     # ... And so on
+}
 ```
+
+---
 
 # Step 4: Assign Each Slot to Two Teams (aka: Schedule Games)
 
@@ -122,9 +141,9 @@ When scheduling games, the following prioritization logic is followed:
 - **Balance Total Game Counts:** Among teams that satisfy the above criteria, prefer teams with fewer total games played so far this season. This acts as a secondary scoring factor to keep all teams roughly even in total games played.
 - **Day/Time Balance:** Try to ensure no team always plays on the same day or always plays at the same time; spread games fairly across the week and across time slots. This is a lower-weighted optimization that provides a small scoring bonus to improve overall fairness.
 
-Example Output:
+**Example Output:**
 
-```
+```python
 opponent_assignments = {
     # Week 38 - Only 10U and 12U are active
     ("SC1", date(2025-09-15), "18:00"): ("10U", "Anacondas", "Boas"),
@@ -135,7 +154,7 @@ opponent_assignments = {
     ("SC1", date(2025-09-17), "19:30"): ("10U", "Serpents", "Sidewinders"),
     ("SC1", date(2025-09-18), "19:30"): ("12U", "Cardinals", "Eagles"),
     
-    ("SC2", date(2025-09-15), "18:00"): ("10U", "Vipers", "Anacondas"),  # Anacondas' 2nd game? No! Different week logic applies
+    ("SC2", date(2025-09-15), "18:00"): ("10U", "Vipers", "Anacondas"),
     ("SC2", date(2025-09-15), "19:30"): ("12U", "Falcons", "Hawks"),
     ("SC2", date(2025-09-16), "18:00"): ("12U", "Orioles", "Owls"),
     ("SC2", date(2025-09-16), "19:30"): ("12U", "Phoenix", "Swifts"),
@@ -150,9 +169,6 @@ opponent_assignments = {
     ("SC1", date(2025-09-25), "18:00"): ("7U", "Hurricanes", "Lightning"),
     ("SC1", date(2025-09-25), "19:30"): ("7U", "Thunder", "Tornadoes"),
     ("SC1", date(2025-09-26), "19:30"): ("7U", "Whirlwind", "Wildfire"),
-    
-    ("SC2", date(2025-09-24), "18:00"): ("7U", "Blizzard", "Earthquakes"),  # Wait, Blizzard plays twice?
-    # Actually NO - this would violate "haven't played this week" - let me correct:
     
     ("SC2", date(2025-09-24), "18:00"): ("8U", "Aliens", "Comets"),
     ("SC2", date(2025-09-24), "19:30"): ("8U", "Cosmos", "Eclipse"),
@@ -173,6 +189,8 @@ opponent_assignments = {
 }
 ```
 
+---
+
 # Step 5: Assign Home/Away Designations
 
 For each game that has two teams assigned, decide which team is "home" and which team is "away."
@@ -180,12 +198,12 @@ For each game that has two teams assigned, decide which team is "home" and which
 The following logic/rules are applied:
 
 - **Balance Each Team's Home/Away Ratio:** Every team should have roughly equal home and away games.
-- **Process Games Chronologically**: Assign home/away in date/time order to maintain consistency.
+- **Process Games Chronologically:** Assign home/away in date/time order to maintain consistency.
 
-Sample Output:
+**Sample Output:**
 
-```
-# Now the left-right order in which games are listed in the output matters: first time listed is home, second is away
+```python
+# Now the left-right order in which teams are listed matters: first team = home, second team = away
 final_assignments = {
     # Week 38 - Only 10U and 12U are active
     ("SC1", date(2025-09-15), "18:00"): ("10U", "Anacondas", "Boas"),        # Anacondas HOME, Boas AWAY
@@ -196,25 +214,30 @@ final_assignments = {
     ("SC1", date(2025-09-17), "19:30"): ("10U", "Sidewinders", "Serpents"),  # Sidewinders HOME, Serpents AWAY
     ("SC1", date(2025-09-18), "19:30"): ("12U", "Cardinals", "Eagles"),
     
-    ("SC2", date(2025-09-15), "18:00"): ("10U", "Anacondas", "Vipers"),      # Anacondas HOME again? NO - see note below
+    ("SC2", date(2025-09-15), "18:00"): ("10U", "Vipers", "Anacondas"),      # Vipers HOME, Anacondas AWAY
     ("SC2", date(2025-09-15), "19:30"): ("12U", "Falcons", "Hawks"),
     ("SC2", date(2025-09-16), "18:00"): ("12U", "Owls", "Orioles"),          # Owls HOME, Orioles AWAY
     ("SC2", date(2025-09-16), "19:30"): ("12U", "Phoenix", "Swifts"),
-    ("SC2", date(2025-09-17), "18:00"): ("12U", "Hawks", "Cardinals"),       # Hawks HOME, Cardinals AWAY (Cardinals away this time)
+    ("SC2", date(2025-09-17), "18:00"): ("12U", "Hawks", "Cardinals"),       # Hawks HOME, Cardinals AWAY
     # And so on... 
+}
 ```
+
+---
 
 # Step 6: Eliminate Bye Weeks
 
-Within divisions that have an odd number of teams, the schedule generated in the previous step contains bye weeks for some teams (e.g., a division with 13 teams can only play 6 games in a week, leaving one team out). To ensure that every team (in every division) plays at least 1 game per week (never more or less), the schedule is modified during this step. Additional games are inserted into the schedule to ensure every team plays every week. This can result in some teams (within the same division) playing a different number of games within a season and some teams playing 2 games in a single week. If a division has an even number of teams, the division is skipped during this step.
+Within divisions that have an odd number of teams, the schedule generated in the previous step contains bye weeks for some teams (e.g., a division with 13 teams can only play 6 games in a week, leaving one team out). To ensure that every team (in every division) plays at least 1 game per week, the schedule is modified during this step. Additional games are inserted into the schedule to ensure every team plays every week. This can result in some teams (within the same division) playing a different number of games within a season and some teams playing 2 games in a single week. If a division has an even number of teams, the division is skipped during this step.
 
 Key rules/assumptions followed:
 
 * To eliminate bye weeks, empty slots (unfilled during previous steps listed above) are used.
 * Each team plays extra games in AT MOST ONE week per season.
-* When scheduling bye elimination games, the program prefers new matchups (team that have not yet played each other).
+* When scheduling bye elimination games, the program prefers new matchups (teams that have not yet played each other).
 
-Sample Output: Same as the previous step above (into `final_assignments`) but with additional games inserted.
+**Sample Output:** Same as the previous step above (into `final_assignments`) but with additional games inserted.
+
+---
 
 # Step 7: Make Optimization Tweaks to the Schedule
 
@@ -226,17 +249,19 @@ Make changes to the generated schedule with the following goals in mind:
 
 When attempting to satisfy the above goals, the following constraints are honored:
 
-- **Matchups never change:** Example: If Blizzard plays Cyclones, that pairing stays (only home/away or day/time might change).
+- **Matchups never change:** If Blizzard plays Cyclones, that pairing stays (only home/away or day/time might change).
 - **Same week only:** Day/time swaps only happen within the same week (don't move a Week 39 game to Week 40).
 - **Same division only:** Day/time swaps only happen between games in the same division. Example: never move a 7U game into an 8U slot (or vice versa).
 
-Sample Output: Same as the previous step above (into `final_assignments`) but with slot data modified.
+**Sample Output:** Same as the previous step above (into `final_assignments`) but with slot data modified.
+
+---
 
 # Step 8: Output the Final CSV File
 
 Take the completed, optimized schedule (within `final_assignments`) and write it out as a CSV file.
 
-Important: When the CSV file is output, there may be games that are needed but could not be scheduled due to insufficient field capacity. That is, there are not enough available time slots across all fields to meet total weekly demand, due to: blackout dates eliminating available days; field priority mismatches where fields won't accept divisions that need slots; field continuity constraints blocking optimal allocation; bye elimination requiring extra games with no empty slots available; or divisions having misaligned active weeks compared to available capacity. When this occurs, the CSV file contains rows where two teams are paired together to play each other, but the slot has no field, date, or time, as shown here: `40,,,,,,,7U,Thunder,Tornadoes`.
+**Important:** When the CSV file is output, there may be games that are needed but could not be scheduled due to insufficient field capacity. That is, there are not enough available time slots across all fields to meet total weekly demand, due to: blackout dates eliminating available days; field priority mismatches where fields won't accept divisions that need slots; field continuity constraints blocking optimal allocation; bye elimination requiring extra games with no empty slots available; or divisions having misaligned active weeks compared to available capacity. When this occurs, the CSV file contains rows where two teams are paired together to play each other, but the slot has no field, date, or time, as shown here: `40,,,,,,,7U,Thunder,Tornadoes`.
 
 In addition to the CSV file that is generated to disk, the command line will produce output similar to:
 
@@ -273,9 +298,3 @@ INFO:   12U: 37 games
 WARNING: 3 games could not be scheduled due to insufficient capacity
 ERROR: SCHEDULE VALIDATION FAILED: 3 games could not be scheduled
 ```
-
-
-
-
-
-
